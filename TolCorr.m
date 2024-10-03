@@ -91,3 +91,12 @@ Ys = infsup(b_ex_left, b_ex_rigth)
 y = mid(Ys); %-16384*0.5;
 epsilon = rad(Ys);
 [tolmax,argmax, env] = tolsolvty(xx,xx,y-epsilon,y+epsilon,1);
+
+figure
+xlimits = [-0.5 0.5];
+hold on
+h4 = errorbar(xx(:,1)-0.01, y_ex, epsilon_ex,'.g');
+set(h4, 'color', Pantone)
+%h5 = errorbar(xx(:,1), y_in, epsilon_in,'.b');
+h5 = errorbar(xx(:,1), y_easy, epsilon_easy,'.r');
+set(h5, 'color', RoyalMail)
