@@ -10,7 +10,6 @@ b_ex = ir_outer(irp_T2025_ex);
 y_easy = (b_easy_left + b_easy_rigth)/2;
 epsilon_easy = (-b_easy_left + b_easy_rigth)/2;
 irp_T2025_easy = ir_problem(xx, y_easy, epsilon_easy);
-ir_plotbeta(irp_T2025_easy)
 
 % opt
 y_opt = (b_opt_left4 + b_opt_rigth4)/2;
@@ -27,9 +26,10 @@ irp_T2025_opt = ir_problem(xx4opt, y_opt, epsilon_opt);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure
 xlimits = [0 10];
+xlimits = [-0.5 0.5];
 hold on
 pcolor = [0.7 0.9 0.7]
-pcolor = 2*Pantone
+%pcolor = 2*Pantone
 [px,py]= ir_plotmodelset_c(irp_T2025_ex, xlimits, pcolor)
  h1 =  patch(px,py,pcolor);
 ##   plot(px,py(:,1),"m-","LineWidth",1, "color", 0.5*pcolor);
@@ -38,7 +38,7 @@ pcolor = 2*Pantone
 
 %
 pcolor = [0.9 0.7 0.7]
-pcolor = RoyalMail
+%pcolor = RoyalMail
 [px,py]= ir_plotmodelset_c(irp_T2025_easy, xlimits, pcolor)
  h2 =  patch(px,py,pcolor);
  set(h2, 'facecolor', 0.9*RoyalMail)
@@ -54,8 +54,13 @@ pcolor = OxfordBlue
 ##ir_scatter(irp_T2025_in,'b.')
 ##ir_scatter(irp_T2025_ex,'bo')
 
-h4 = errorbar(xx(:,1)-0.1, y_ex, epsilon_ex,'.g');
+shift = 0
+h4 = errorbar(xx(:,2)-shift, y_ex, epsilon_ex,'.r');
 set(h4, 'color', Pantone)
+xp = [-0.5 0.5]
+yp = argmax(1)+argmax(2)*xp
+h41 = plot(xp, yp, '-m')
+
 %h5 = errorbar(xx(:,1), y_in, epsilon_in,'.b');
 h5 = errorbar(xx(:,1), y_easy, epsilon_easy,'.r');
 set(h5, 'color', RoyalMail)

@@ -57,7 +57,7 @@ Colors_special
 ##hold on
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-##[tolmax,argmax, env] = tolsolvty(xx,xx,b_ex_left,b_ex_rigth,1);
+% [tolmax,argmax, env] = tolsolvty(xx, xx, b_ex_left,b_ex_rigth,1);
 ##[tolmax,argmax_in, env_in] = tolsolvty(xx,xx,b_in_left,b_in_rigth,1)
 ##[tolmax,argmax, env] = tolsolvty(xx,xx,b_easy_left,b_easy_rigth,1);
 ##
