@@ -9,6 +9,7 @@ close all
 dirroot ='e:\Users\Public\Documents\ST\2024\T\'
 dir2023 ='e:\Users\Public\Documents\ST\2023\T\'
 dirki ='e:\Users\Public\Documents\ST\2024\T\kinterval-0.0.1\'
+diroctave ='e:\Users\Public\Documents\ST\2024\T\octave-interval\m\'
 % 2024-08-12
 dirData = 'e:\Users\Public\Documents\ST\2024\T\icamp2025\'
 % 2024-10-02
@@ -16,16 +17,17 @@ dirData = 'e:\Users\Public\Documents\ST\2024\T\icamp2025v2\'
 
 % 2024-08-23
 % HomePC
-dirroot = 'D:\ST\2024\T\'
-dirki = 'D:\ST\2024\T\kinterval-0.0.1'
-dirData = 'D:\ST\2024\T\icamp2025\'
-dirData = 'd:\ST\2023\T\icamp2025v2\'
-dir2023 =  'd:\ST\2023\T\'
+##dirroot = 'D:\ST\2024\T\'
+##dirki = 'D:\ST\2024\T\kinterval-0.0.1'
+##dirData = 'D:\ST\2024\T\icamp2025\'
+##dirData = 'd:\ST\2023\T\icamp2025v2\'
+##dir2023 =  'd:\ST\2023\T\'
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 addpath(dirroot)
 addpath(dir2023)
 addpath(dirki)
+addpath(diroctave)
 
 cd(dirroot), pwd
 
@@ -39,7 +41,7 @@ dirlinprogpoly = 'D:\ST\2024\T\octave-interval\m\polytopes\'
 addpath(dirlinprogpoly)
 %
 dir2D = 'e:\Users\Public\Documents\ST\2024\T\IntLinInc2D\'
-dir2D = 'D:\ST\2024\T\IntLinInc2D\'
+%dir2D = 'D:\ST\2024\T\IntLinInc2D\'
 %dirlinprogpoly = 'D:\ST\2024\T\octave-interval\m\polytopes\'
 addpath(dir2D)
 %
@@ -57,7 +59,7 @@ Colors_special
 ##hold on
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [tolmax,argmax, env] = tolsolvty(xx, xx, b_ex_left,b_ex_rigth,1);
+##[tolmax,argmax, env] = tolsolvty(xx,xx,b_ex_left,b_ex_rigth,1);
 ##[tolmax,argmax_in, env_in] = tolsolvty(xx,xx,b_in_left,b_in_rigth,1)
 ##[tolmax,argmax, env] = tolsolvty(xx,xx,b_easy_left,b_easy_rigth,1);
 ##
@@ -84,6 +86,11 @@ InfoSet
 % 2024-10-03
 ForecastCorridor
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+save Tokyo2
+
+% 2024-10-07
+% load Tokyo2
+
 
 Ys = infsup(b_ex_left, b_ex_rigth)
 ##y = mid(Ys)/16384-0.5;
@@ -99,4 +106,4 @@ h4 = errorbar(xx(:,1)-0.01, y_ex, epsilon_ex,'.g');
 set(h4, 'color', Pantone)
 %h5 = errorbar(xx(:,1), y_in, epsilon_in,'.b');
 h5 = errorbar(xx(:,1), y_easy, epsilon_easy,'.r');
-set(h5, 'color', RoyalMail)
+set(h5, 'color', RoyalMail
