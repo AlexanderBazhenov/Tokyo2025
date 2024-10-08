@@ -59,11 +59,23 @@ pcolor = [0.7 0.9 0.7]
 set(h4, 'color', 0.5*pcolor )
 %h5 = errorbar(xx(:,1), y_in, epsilon_in,'.b');
 h5 = errorbar(xx(:,1), y_easy, epsilon_easy,'.r');
-pcolor = [0.9 0.7 0.7]
-set(h5, 'color', RoyalMail)
-h6 = errorbar(xx4opt(:,1)+0.1, y_opt, epsilon_opt,'.b');
+pcolor = [0.9 0.35 0.35]
+set(h5, 'color', pcolor)
+% seek min eps
+minind_array = zeros(length(xx),1)
+xx4eq = xx4opt(:, 1)
+for ii=1:length(xx)
+  [indnow, indnow2]  = find(xx4eq == ii)
+  xxnow = xx4eq(indnow)
+  epsilonnow = epsilon_opt(indnow)
+  [mineps, minind ] = min(epsilonnow)
+  minind_array (ii) =  indnow(minind )
+end
+% seek min eps
+%h6 = errorbar(xx4opt(:,1)+0.1, y_opt, epsilon_opt,'.b');
+h6 = errorbar(xx4opt(minind_array,1)+0.1, y_opt(minind_array), epsilon_opt(minind_array),'.b');
 pcolor = [ 0.7 0.7 0.9]
-set(h6, 'color', 0.5*pcolor)
+set(h6, 'color', 0.2*pcolor)
 
 
 lgd123 = legend([h1 h2 h3 h4 h5 h6], ...
@@ -84,3 +96,5 @@ titlestr = strcat('Set of models compatible with data and constraints', ' Tokyo2
 %title(titlestr)
 figure_name_out=strcat(titlestr, '.png')
 print('-dpng', '-r300', figure_name_out), pwd
+
+
