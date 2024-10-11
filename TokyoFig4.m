@@ -5,8 +5,8 @@
 NonCompCh1 = NonComp(1:1024);
 figure
 hist(NonCompCh1, max(NonCompCh1))
-xlabel('Number of equations with Tol_{i} < 0')
-ylabel('Count')
+xlabel('Count of equations with Tol_{i} < 0')
+ylabel('Count of ISLAEs')
 xlim([-0.2 9.2])
 set(gca, 'fontsize', 14);
 xticks(0:max(NonCompCh1))

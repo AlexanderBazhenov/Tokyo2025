@@ -28,6 +28,8 @@ irp_T2025_opt = ir_problem(xx4opt, y_opt, epsilon_opt);
 figure
 xlimits = [0 10];
 hold on
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 pcolor = [0.7 0.9 0.7]
 %pcolor = 2*Pantone
 [px,py]= ir_plotmodelset_c(irp_T2025_ex, xlimits, pcolor)
@@ -48,6 +50,7 @@ pcolor = [0.7 0.7 0.9]
 [px,py]=  ir_plotmodelset_c(irp_T2025_opt, xlimits, pcolor)
  h3 =  patch(px,py,pcolor);
 % set(h3, 'facecolor', 1.3*OxfordBlue)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 h4 = errorbar(xx(:,1)-0.1, y_ex, epsilon_ex,'.g');
 pcolor = [0.7 0.9 0.7]
@@ -79,14 +82,39 @@ set(lgd123, 'location', 'north')
 set(lgd123, 'fontsize', 14)
 
 xticks([1:9])
-
-%ir_scatter(irp_T2025_easy,'bs')
-%ir_scatter(irp_T2025_opt,'kx')
-
 grid on
 set(gca, 'fontsize', 14)
-xlabel('number')
-ylabel('data')
+xlabel('\it x')
+ylabel('Data')
+titlestr = strcat('Set of models compatible with data and constraints', ' Tokyo2025 v2')
+%title(titlestr)
+figure_name_out=strcat(titlestr, '.png')
+print('-dpng', '-r300', figure_name_out), pwd
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2024-10-11
+figure
+xlimits = [0 10];
+hold on
+
+ForecastBands
+
+hin = errorbar(xx(:,1), y_ex, epsilon_ex/5,'.k');
+pcolor = [0 0 0]
+set(hin, 'color', pcolor )
+hex = errorbar(xx(:,1), y_ex, epsilon_ex,'.k');
+
+lgd1234 = legend([h1 h2 h3 hex ], ...
+  {'external', 'method1', 'method2', 'twin data'})
+set(lgd1234, 'location', 'north')
+set(lgd1234, 'fontsize', 14)
+
+
+xticks([1:9])
+grid on
+set(gca, 'fontsize', 14)
+xlabel('\it x')
+ylabel('\it y')
 titlestr = strcat('Set of models compatible with data and constraints', ' Tokyo2025 v2')
 %title(titlestr)
 figure_name_out=strcat(titlestr, '.png')
