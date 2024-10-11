@@ -49,11 +49,6 @@ pcolor = [0.7 0.7 0.9]
  h3 =  patch(px,py,pcolor);
 % set(h3, 'facecolor', 1.3*OxfordBlue)
 
-##
-## %
-##ir_scatter(irp_T2025_in,'b.')
-##ir_scatter(irp_T2025_ex,'bo')
-
 h4 = errorbar(xx(:,1)-0.1, y_ex, epsilon_ex,'.g');
 pcolor = [0.7 0.9 0.7]
 set(h4, 'color', 0.5*pcolor )
