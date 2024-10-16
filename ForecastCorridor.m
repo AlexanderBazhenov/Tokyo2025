@@ -27,6 +27,7 @@ irp_T2025_opt = ir_problem(xx4opt, y_opt, epsilon_opt);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure
 xlimits = [0 10];
+% xlimits = [0 3];
 hold on
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,4 +121,41 @@ titlestr = strcat('Set of models compatible with data and constraints', ' Tokyo2
 figure_name_out=strcat(titlestr, '.png')
 print('-dpng', '-r300', figure_name_out), pwd
 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2024-10-16
+
+figure
+xlimits = [0 10];
+% xlimits = [0 3];
+hold on
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+pcolor = [0.7 0.9 0.7]
+[px,py]= ir_plotmodelset_c(irp_T2025_ex, xlimits, pcolor)
+ h1 =  patch(px,py,pcolor);
+%
+pcolor = [0.9 0.7 0.7]
+[px,py]= ir_plotmodelset_c(irp_T2025_easy, xlimits, pcolor)
+ h2 =  patch(px,py,pcolor);
+
+hin = errorbar(xx(:,1), y_ex, epsilon_easy,'.k');
+pcolor = [0 0 0]
+set(hin, 'color', pcolor )
+hex = errorbar(xx(:,1), y_ex, epsilon_ex,'.k');
+
+lgd123 = legend([h1 h2 hex ], ...
+  {'external', 'internal', 'twin data'})
+set(lgd123, 'location', 'north')
+set(lgd123, 'fontsize', 14)
+
+xticks([0:3])
+grid on
+set(gca, 'fontsize', 14)
+xlabel('\it x')
+ylabel('\it y')
+titlestr = strcat('Set of models compatible with data and constraints', ' SimpleTwinData')
+%title(titlestr)
+figure_name_out=strcat(titlestr, '.png')
+print('-dpng', '-r300', figure_name_out), pwd
 
